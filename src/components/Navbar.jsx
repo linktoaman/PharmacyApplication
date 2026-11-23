@@ -1,7 +1,7 @@
 const views = [
   { id: 'home', label: 'Home' },
+  { id: 'medicines', label: 'Medicines' },
   { id: 'cart', label: 'Cart' },
-  { id: 'checkout', label: 'Checkout' },
 ];
 
 export default function Navbar({ activeView, onNavigate }) {

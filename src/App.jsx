@@ -3,6 +3,7 @@ import { useState } from 'react';
 import Cart from './components/Cart.jsx';
 import CheckoutForm from './components/CheckoutForm.jsx';
 import Home from './components/Home.jsx';
+import MedicineList from './components/MedicineList.jsx';
 import Navbar from './components/Navbar.jsx';
 import medicines from './models/medicines.js';
 import { addMedicineToCart, calculateCartTotals } from './utils/cart.js';
@@ -112,12 +113,17 @@ export default function App() {
       </header>
       <main id="main-content" className="shell page-content">
         {activeView === 'home' && (
-          <Home
-            medicines={medicines}
-            searchQuery={searchQuery}
-            onSearchChange={handleSearchChange}
-            onAddToCart={handleAddToCart}
-          />
+          <Home onNavigate={handleNavigate} />
+        )}
+        {activeView === 'medicines' && (
+          <section className="section">
+            <MedicineList
+              medicines={medicines}
+              searchQuery={searchQuery}
+              onSearchChange={handleSearchChange}
+              onAddToCart={handleAddToCart}
+            />
+          </section>
         )}
         {activeView === 'cart' && (
           <Cart
