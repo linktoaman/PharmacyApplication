@@ -55,10 +55,25 @@ export default function App() {
     }));
   };
 
-  const handleAddToCart = (medicine) => {
+  const handleClearSearch = () => {
     setAppState((currentState) => ({
       ...currentState,
-      cart: addMedicineToCart(currentState.cart, medicine),
+      searchQuery: '',
+    }));
+  };
+
+  const handleAddToCart = (medicineId) => {
+    const selectedMedicine = medicines.find((medicine) => (
+      medicine.id === medicineId
+    ));
+
+    if (!selectedMedicine) {
+      return;
+    }
+
+    setAppState((currentState) => ({
+      ...currentState,
+      cart: addMedicineToCart(currentState.cart, selectedMedicine),
     }));
   };
 
@@ -91,6 +106,7 @@ export default function App() {
               medicines={medicines}
               searchQuery={searchQuery}
               onSearchChange={handleSearchChange}
+              onClearSearch={handleClearSearch}
               onAddToCart={handleAddToCart}
             />
           </section>
