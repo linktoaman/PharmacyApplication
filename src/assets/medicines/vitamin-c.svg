@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 160 120" role="img" aria-labelledby="title desc">
+  <title id="title">Vitamin C placeholder</title>
+  <desc id="desc">Static local medicine artwork for vitamin C supplement.</desc>
+  <rect width="160" height="120" rx="16" fill="#fff0e6"/>
+  <circle cx="80" cy="61" r="34" fill="#ff9f1c"/>
+  <circle cx="80" cy="61" r="24" fill="none" stroke="#ffffff" stroke-width="5"/>
+  <path d="M80 27v68M46 61h68M56 37l48 48M104 37 56 85" stroke="#ffffff" stroke-linecap="round" stroke-width="4"/>
+</svg>

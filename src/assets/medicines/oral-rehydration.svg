@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 160 120" role="img" aria-labelledby="title desc">
+  <title id="title">Oral rehydration placeholder</title>
+  <desc id="desc">Static local medicine artwork for oral rehydration packets.</desc>
+  <rect width="160" height="120" rx="16" fill="#eef8ec"/>
+  <path d="M51 28h58l-6 68H57L51 28z" fill="#ffffff" stroke="#3e7f45" stroke-linejoin="round" stroke-width="4"/>
+  <path d="M64 47h32M63 61h34M66 75h28" stroke="#3e7f45" stroke-linecap="round" stroke-width="4"/>
+  <path d="M80 28v68" stroke="#a2d36f" stroke-width="4"/>
+</svg>

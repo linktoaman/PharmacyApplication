@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 160 120" role="img" aria-labelledby="title desc">
+  <title id="title">Paracetamol placeholder</title>
+  <desc id="desc">Static local medicine artwork for paracetamol tablets.</desc>
+  <rect width="160" height="120" rx="16" fill="#eaf6f1"/>
+  <rect x="33" y="35" width="94" height="50" rx="18" fill="#ffffff" stroke="#166f64" stroke-width="4"/>
+  <path d="M80 36v48" stroke="#166f64" stroke-width="4"/>
+  <circle cx="57" cy="60" r="8" fill="#f4b740"/>
+  <circle cx="103" cy="60" r="8" fill="#ef6f61"/>
+</svg>
