@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 160 120" role="img" aria-labelledby="title desc">
+  <title id="title">Saline spray placeholder</title>
+  <desc id="desc">Static local medicine artwork for saline nasal spray.</desc>
+  <rect width="160" height="120" rx="16" fill="#eaf7fb"/>
+  <rect x="62" y="42" width="36" height="50" rx="9" fill="#ffffff" stroke="#24788f" stroke-width="4"/>
+  <path d="M66 42V30h29l11 9-11 9H66" fill="#bfe8f2" stroke="#24788f" stroke-linejoin="round" stroke-width="4"/>
+  <path d="M113 34h16M114 45l13 8M114 23l13-8" stroke="#24788f" stroke-linecap="round" stroke-width="4"/>
+</svg>

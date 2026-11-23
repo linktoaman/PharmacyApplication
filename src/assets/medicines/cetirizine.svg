@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 160 120" role="img" aria-labelledby="title desc">
+  <title id="title">Cetirizine placeholder</title>
+  <desc id="desc">Static local medicine artwork for allergy tablets.</desc>
+  <rect width="160" height="120" rx="16" fill="#fff6df"/>
+  <circle cx="80" cy="60" r="31" fill="#ffffff" stroke="#b7791f" stroke-width="4"/>
+  <path d="M58 61h44M80 39v44" stroke="#b7791f" stroke-linecap="round" stroke-width="4"/>
+  <path d="M106 28l10-10M116 42h16M106 92l10 10" stroke="#e38b29" stroke-linecap="round" stroke-width="5"/>
+</svg>

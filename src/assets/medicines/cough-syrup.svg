@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 160 120" role="img" aria-labelledby="title desc">
+  <title id="title">Cough syrup placeholder</title>
+  <desc id="desc">Static local medicine artwork for cough syrup.</desc>
+  <rect width="160" height="120" rx="16" fill="#f7edf4"/>
+  <rect x="62" y="24" width="36" height="12" rx="4" fill="#8c315f"/>
+  <rect x="56" y="34" width="48" height="62" rx="10" fill="#ffffff" stroke="#8c315f" stroke-width="4"/>
+  <rect x="63" y="56" width="34" height="23" rx="6" fill="#d95f8c"/>
+  <path d="M68 45h24" stroke="#8c315f" stroke-linecap="round" stroke-width="4"/>
+</svg>

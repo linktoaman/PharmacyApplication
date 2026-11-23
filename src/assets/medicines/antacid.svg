@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 160 120" role="img" aria-labelledby="title desc">
+  <title id="title">Antacid placeholder</title>
+  <desc id="desc">Static local medicine artwork for antacid chewables.</desc>
+  <rect width="160" height="120" rx="16" fill="#edf7ff"/>
+  <rect x="46" y="35" width="68" height="50" rx="8" fill="#ffffff" stroke="#1b76a8" stroke-width="4"/>
+  <path d="M59 49h42M59 61h42M59 73h26" stroke="#1b76a8" stroke-linecap="round" stroke-width="4"/>
+  <circle cx="110" cy="82" r="13" fill="#7fd1c6"/>
+</svg>
