@@ -5,13 +5,7 @@ export function filterMedicines(medicines, query) {
     return medicines;
   }
 
-  return medicines.filter((medicine) => {
-    const searchableText = [
-      medicine.name,
-      medicine.category,
-      medicine.description,
-    ].join(' ').toLowerCase();
-
-    return searchableText.includes(normalizedQuery);
-  });
+  return medicines.filter((medicine) => (
+    medicine.name.toLowerCase().includes(normalizedQuery)
+  ));
 }

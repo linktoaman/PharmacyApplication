@@ -28,13 +28,17 @@ describe('filterMedicines', () => {
     expect(filterMedicines(medicines, '   ')).toBe(medicines);
   });
 
-  it('filters medicines by name, category, or description without matching case', () => {
+  it('filters medicines by partial name without matching case', () => {
     expect(filterMedicines(medicines, 'pain')).toEqual([medicines[0]]);
     expect(filterMedicines(medicines, 'ALLERGY')).toEqual([medicines[1]]);
-    expect(filterMedicines(medicines, 'vitamin')).toEqual([medicines[2]]);
+    expect(filterMedicines(medicines, 'boost')).toEqual([medicines[2]]);
   });
 
   it('trims surrounding whitespace before matching the query', () => {
-    expect(filterMedicines(medicines, '  ibuPROFen  ')).toEqual([medicines[0]]);
+    expect(filterMedicines(medicines, '  vita  ')).toEqual([medicines[2]]);
+  });
+
+  it('returns no medicines when names do not match the query', () => {
+    expect(filterMedicines(medicines, 'ibuprofen')).toEqual([]);
   });
 });
