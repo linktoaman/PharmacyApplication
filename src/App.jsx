@@ -8,54 +8,92 @@ import medicines from './models/medicines.js';
 import { addMedicineToCart, calculateCartTotals } from './utils/cart.js';
 import { initialCheckoutValues, validateCheckout } from './utils/checkout.js';
 
-export default function App() {
-  const [activeView, setActiveView] = useState('home');
-  const [searchQuery, setSearchQuery] = useState('');
-  const [cartLines, setCartLines] = useState([]);
-  const [checkoutValues, setCheckoutValues] = useState(initialCheckoutValues);
-  const [validationMessage, setValidationMessage] = useState('');
-  const [successMessage, setSuccessMessage] = useState('');
+const initialAppState = {
+  activeView: 'home',
+  searchQuery: '',
+  cart: [],
+  checkoutFields: initialCheckoutValues,
+  validationMessage: '',
+  successMessage: '',
+};
 
-  const totals = calculateCartTotals(cartLines);
+export default function App() {
+  const [appState, setAppState] = useState(initialAppState);
+  const {
+    activeView,
+    searchQuery,
+    cart,
+    checkoutFields,
+    validationMessage,
+    successMessage,
+  } = appState;
+
+  const totals = calculateCartTotals(cart);
+
+  const handleNavigate = (nextView) => {
+    setAppState((currentState) => ({
+      ...currentState,
+      activeView: nextView,
+    }));
+  };
+
+  const handleSearchChange = (nextSearchQuery) => {
+    setAppState((currentState) => ({
+      ...currentState,
+      searchQuery: nextSearchQuery,
+    }));
+  };
 
   const handleAddToCart = (medicine) => {
-    setCartLines((currentCartLines) => (
-      addMedicineToCart(currentCartLines, medicine)
-    ));
-    setSuccessMessage('');
-    setValidationMessage('');
+    setAppState((currentState) => ({
+      ...currentState,
+      cart: addMedicineToCart(currentState.cart, medicine),
+      validationMessage: '',
+      successMessage: '',
+    }));
   };
 
   const handleCheckoutChange = (event) => {
     const { name, value } = event.target;
 
-    setCheckoutValues((currentValues) => ({
-      ...currentValues,
-      [name]: value,
+    setAppState((currentState) => ({
+      ...currentState,
+      checkoutFields: {
+        ...currentState.checkoutFields,
+        [name]: value,
+      },
     }));
   };
 
   const handleCheckoutSubmit = (event) => {
     event.preventDefault();
 
-    const nextValidationMessage = validateCheckout(checkoutValues, cartLines);
+    const nextValidationMessage = validateCheckout(checkoutFields, cart);
 
     if (nextValidationMessage !== '') {
-      setValidationMessage(nextValidationMessage);
-      setSuccessMessage('');
+      setAppState((currentState) => ({
+        ...currentState,
+        validationMessage: nextValidationMessage,
+        successMessage: '',
+      }));
       return;
     }
 
-    setValidationMessage('');
-    setSuccessMessage(
-      'Pickup request received. The cart remains local to this session.',
-    );
+    setAppState((currentState) => ({
+      ...currentState,
+      validationMessage: '',
+      successMessage:
+        'Pickup request received. The cart remains local to this session.',
+    }));
   };
 
   const handleCheckoutReset = () => {
-    setCheckoutValues(initialCheckoutValues);
-    setValidationMessage('');
-    setSuccessMessage('');
+    setAppState((currentState) => ({
+      ...currentState,
+      checkoutFields: initialCheckoutValues,
+      validationMessage: '',
+      successMessage: '',
+    }));
   };
 
   return (
@@ -69,7 +107,7 @@ export default function App() {
             <span className="brand-mark__cross">+</span>
           </div>
           <span className="brand-name">Pharmacy Three</span>
-          <Navbar activeView={activeView} onNavigate={setActiveView} />
+          <Navbar activeView={activeView} onNavigate={handleNavigate} />
         </div>
       </header>
       <main id="main-content" className="shell page-content">
@@ -77,20 +115,20 @@ export default function App() {
           <Home
             medicines={medicines}
             searchQuery={searchQuery}
-            onSearchChange={setSearchQuery}
+            onSearchChange={handleSearchChange}
             onAddToCart={handleAddToCart}
           />
         )}
         {activeView === 'cart' && (
           <Cart
-            cartLines={cartLines}
+            cartLines={cart}
             totals={totals}
-            onNavigate={setActiveView}
+            onNavigate={handleNavigate}
           />
         )}
         {activeView === 'checkout' && (
           <CheckoutForm
-            checkoutValues={checkoutValues}
+            checkoutValues={checkoutFields}
             validationMessage={validationMessage}
             successMessage={successMessage}
             onChange={handleCheckoutChange}
