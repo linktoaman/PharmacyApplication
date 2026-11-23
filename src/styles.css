@@ -340,6 +340,185 @@ tbody tr:hover {
   max-width: 42rem;
 }
 
+.home-hero {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(17rem, 24rem);
+  align-items: center;
+  gap: var(--space-10);
+}
+
+.home-hero__copy p {
+  max-width: 39rem;
+  color: var(--color-text-muted);
+  font-size: 1.08rem;
+}
+
+.home-hero__actions {
+  margin-top: var(--space-6);
+}
+
+.pharmacy-illustration {
+  position: relative;
+  min-height: 23rem;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  background:
+    linear-gradient(
+      180deg,
+      rgb(255 255 255 / 88%) 0%,
+      rgb(237 248 246 / 96%) 100%
+    );
+  box-shadow: var(--shadow-md);
+}
+
+.pharmacy-illustration::before {
+  position: absolute;
+  right: 12%;
+  bottom: 2.5rem;
+  left: 12%;
+  height: 1rem;
+  border-radius: 999px;
+  background: rgb(7 59 68 / 12%);
+  content: "";
+}
+
+.pharmacy-illustration__building {
+  position: absolute;
+  right: 20%;
+  bottom: 3rem;
+  width: 58%;
+  min-width: 12rem;
+  min-height: 14rem;
+  border: 0.18rem solid var(--color-primary-strong);
+  border-radius:
+    var(--radius-md) var(--radius-md) var(--radius-sm) var(--radius-sm);
+  background: var(--color-surface);
+  box-shadow: 0.7rem 0.8rem 0 rgb(6 122 125 / 12%);
+}
+
+.pharmacy-illustration__building::before {
+  position: absolute;
+  top: -2.2rem;
+  right: 8%;
+  left: 8%;
+  height: 2rem;
+  border: 0.18rem solid var(--color-primary-strong);
+  border-bottom: 0;
+  border-radius: var(--radius-md) var(--radius-md) 0 0;
+  background: var(--color-accent-soft);
+  content: "";
+}
+
+.pharmacy-illustration__sign {
+  position: absolute;
+  top: -1.6rem;
+  left: 50%;
+  transform: translateX(-50%);
+  color: var(--color-heading);
+  font-size: 1rem;
+  font-weight: 800;
+}
+
+.pharmacy-illustration__cross {
+  display: grid;
+  position: absolute;
+  top: 1.35rem;
+  left: 50%;
+  width: 4rem;
+  height: 4rem;
+  transform: translateX(-50%);
+  place-items: center;
+  border-radius: var(--radius-md);
+  background: var(--color-primary);
+  color: var(--color-surface);
+  font-size: 3rem;
+  font-weight: 800;
+  line-height: 1;
+}
+
+.pharmacy-illustration__shelves {
+  position: absolute;
+  right: 1.2rem;
+  bottom: 1.3rem;
+  left: 1.2rem;
+  display: grid;
+  gap: var(--space-3);
+}
+
+.pharmacy-illustration__shelves span {
+  height: 1.2rem;
+  border-radius: 999px;
+  background:
+    linear-gradient(
+      90deg,
+      var(--color-primary-soft) 0 38%,
+      var(--color-accent-soft) 38% 65%,
+      var(--color-border) 65% 100%
+    );
+}
+
+.pharmacy-illustration__bottle {
+  position: absolute;
+  bottom: 4.2rem;
+  left: 10%;
+  width: 4.2rem;
+  height: 7rem;
+  border: 0.18rem solid var(--color-primary-strong);
+  border-radius: var(--radius-sm);
+  background: var(--color-accent-soft);
+  transform: rotate(-7deg);
+}
+
+.pharmacy-illustration__bottle::before {
+  position: absolute;
+  top: -1.1rem;
+  left: 50%;
+  width: 2.4rem;
+  height: 1rem;
+  transform: translateX(-50%);
+  border-radius: var(--radius-sm) var(--radius-sm) 0 0;
+  background: var(--color-primary-strong);
+  content: "";
+}
+
+.pharmacy-illustration__bottle span {
+  position: absolute;
+  top: 2.4rem;
+  right: 0.65rem;
+  left: 0.65rem;
+  height: 1.7rem;
+  border-radius: var(--radius-sm);
+  background: var(--color-surface);
+}
+
+.pharmacy-illustration__pill {
+  position: absolute;
+  border: 0.16rem solid var(--color-primary-strong);
+  border-radius: 999px;
+  background:
+    linear-gradient(
+      90deg,
+      var(--color-surface) 0 50%,
+      var(--color-accent) 50% 100%
+    );
+}
+
+.pharmacy-illustration__pill--one {
+  top: 4.25rem;
+  right: 10%;
+  width: 4.5rem;
+  height: 1.7rem;
+  transform: rotate(18deg);
+}
+
+.pharmacy-illustration__pill--two {
+  bottom: 2rem;
+  left: 34%;
+  width: 3.6rem;
+  height: 1.45rem;
+  transform: rotate(-16deg);
+}
+
 .eyebrow {
   margin: 0 0 var(--space-3);
   color: var(--color-primary);
@@ -564,6 +743,15 @@ textarea:focus {
   .page-content {
     min-height: calc(100vh - 8.25rem);
     padding-block: var(--space-12);
+  }
+
+  .home-hero {
+    grid-template-columns: 1fr;
+    gap: var(--space-8);
+  }
+
+  .pharmacy-illustration {
+    min-height: 18rem;
   }
 
   .card,
