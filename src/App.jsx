@@ -4,13 +4,15 @@ import Cart from './components/Cart.jsx';
 import Home from './components/Home.jsx';
 import MedicineList from './components/MedicineList.jsx';
 import Navbar from './components/Navbar.jsx';
-import medicines from './models/medicines.js';
+import staticMedicines from './models/medicines.js';
 import { addMedicineToCart, calculateCartTotals } from './utils/cart.js';
+import { filterMedicines } from './utils/search.js';
 
 const validViews = new Set(['home', 'medicines', 'cart']);
 
 const initialAppState = {
   activeView: 'home',
+  medicines: staticMedicines,
   searchQuery: '',
   cart: [],
 };
@@ -21,10 +23,12 @@ export default function App() {
   const shouldFocusMainRef = useRef(false);
   const {
     activeView,
+    medicines,
     searchQuery,
     cart,
   } = appState;
 
+  const filteredMedicines = filterMedicines(medicines, searchQuery);
   const totals = calculateCartTotals(cart);
 
   useEffect(() => {
@@ -55,10 +59,25 @@ export default function App() {
     }));
   };
 
-  const handleAddToCart = (medicine) => {
+  const handleClearSearch = () => {
     setAppState((currentState) => ({
       ...currentState,
-      cart: addMedicineToCart(currentState.cart, medicine),
+      searchQuery: '',
+    }));
+  };
+
+  const handleAddToCart = (medicineId) => {
+    const selectedMedicine = medicines.find((medicine) => (
+      medicine.id === medicineId
+    ));
+
+    if (!selectedMedicine) {
+      return;
+    }
+
+    setAppState((currentState) => ({
+      ...currentState,
+      cart: addMedicineToCart(currentState.cart, selectedMedicine),
     }));
   };
 
@@ -88,9 +107,10 @@ export default function App() {
         {activeView === 'medicines' && (
           <section className="section">
             <MedicineList
-              medicines={medicines}
+              medicines={filteredMedicines}
               searchQuery={searchQuery}
               onSearchChange={handleSearchChange}
+              onClearSearch={handleClearSearch}
               onAddToCart={handleAddToCart}
             />
           </section>

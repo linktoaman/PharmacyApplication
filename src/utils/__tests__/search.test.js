@@ -1,5 +1,6 @@
 import { describe, expect, it } from 'vitest';
 
+import staticMedicines from '../../models/medicines';
 import { filterMedicines } from '../search';
 
 const medicines = [
@@ -24,17 +25,50 @@ const medicines = [
 ];
 
 describe('filterMedicines', () => {
+  it('keeps the bundled static catalog within the required complete shape', () => {
+    expect(staticMedicines.length).toBeGreaterThanOrEqual(6);
+    expect(staticMedicines.length).toBeLessThanOrEqual(10);
+
+    staticMedicines.forEach((medicine) => {
+      expect(medicine).toEqual(expect.objectContaining({
+        id: expect.any(String),
+        name: expect.any(String),
+        category: expect.any(String),
+        description: expect.any(String),
+        price: expect.any(Number),
+        image: expect.any(String),
+        inStock: expect.any(Boolean),
+      }));
+      expect(medicine.id).not.toBe('');
+      expect(medicine.name).not.toBe('');
+      expect(medicine.image).not.toBe('');
+    });
+  });
+
   it('returns every medicine when the search query is blank', () => {
     expect(filterMedicines(medicines, '   ')).toBe(medicines);
   });
 
-  it('filters medicines by name, category, or description without matching case', () => {
+  it('filters medicines by partial name without matching case', () => {
     expect(filterMedicines(medicines, 'pain')).toEqual([medicines[0]]);
     expect(filterMedicines(medicines, 'ALLERGY')).toEqual([medicines[1]]);
-    expect(filterMedicines(medicines, 'vitamin')).toEqual([medicines[2]]);
+    expect(filterMedicines(medicines, 'boost')).toEqual([medicines[2]]);
+  });
+
+  it('filters the static catalog by immediate partial-name queries', () => {
+    expect(filterMedicines(staticMedicines, 'para')).toEqual([
+      staticMedicines[0],
+    ]);
+    expect(filterMedicines(staticMedicines, 'SYR')).toEqual([
+      staticMedicines[4],
+    ]);
   });
 
   it('trims surrounding whitespace before matching the query', () => {
-    expect(filterMedicines(medicines, '  ibuPROFen  ')).toEqual([medicines[0]]);
+    expect(filterMedicines(medicines, '  vita  ')).toEqual([medicines[2]]);
+  });
+
+  it('returns no medicines when names do not match the query', () => {
+    expect(filterMedicines(medicines, 'ibuprofen')).toEqual([]);
   });
 });
